@@ -1,29 +1,4 @@
-import abc
-
-class Machine(abc.ABC):
-    @abc.abstractmethod
-    def __init__(self):
-        pass
-
-    @abc.abstractmethod
-    def insert_card(self) -> str:
-        pass
-
-    @abc.abstractmethod
-    def enter_pin(self) -> str:
-        pass
-
-    @abc.abstractmethod
-    def select_account(self) -> str:
-        pass
-
-    @abc.abstractmethod
-    def select_action(self) -> str:
-        pass
-
-    @abc.abstractmethod
-    def eject_card(self) -> None:
-        pass
+from machine import Machine
 
 class MockMachine(Machine):
     def __init__(self):
@@ -31,6 +6,10 @@ class MockMachine(Machine):
         return
 
     def insert_card(self) -> str:
+        print("")
+        print("==================")
+        print("INSERT CARD SCREEN")
+        print("==================")
         while True:
             card = input("insert card (12 digits): ")
             if card.isnumeric() and len(card) == 12:
@@ -41,6 +20,10 @@ class MockMachine(Machine):
         return card
 
     def enter_pin(self) -> str:
+        print("")
+        print("================")
+        print("PIN ENTER SCREEN")
+        print("================")
         while True:
             pin = input("enter pin (4 digits): ")
             if pin.isnumeric and len(pin) == 4:
@@ -51,11 +34,15 @@ class MockMachine(Machine):
         return pin
 
     def select_account(self, accounts) -> str:
+        print("")
+        print("=====================")
+        print("SELECT ACCOUNT SCREEN")
+        print("=====================")
         for i, account in enumerate(accounts):
             print(f"{i}. {account}")
         print(f"{len(accounts)}. Cancel")
         while True:
-            option = input(f"select account (0 ~ {len(accounts) - 1})")
+            option = input(f"select account (0 ~ {len(accounts)}): ")
             if option.isnumeric and int(option) <= len(accounts):
                 break
             else:
@@ -64,6 +51,10 @@ class MockMachine(Machine):
         return option
 
     def select_action(self) -> str:
+        print("")
+        print("====================")
+        print("SELECT ACTION SCREEN")
+        print("====================")
         print("0. Check Balance")
         print("1. Deposit Cash")
         print("2. Withdraw Cash")
@@ -78,4 +69,14 @@ class MockMachine(Machine):
         return option
 
     def eject_card(self) -> None:
-        pass
+        print("")
+        print("=================")
+        print("EJECT CARD SCREEN")
+        print("=================")
+        input("please retrieve your card (press enter)")
+        print("bye")
+        return
+
+    def print_message(self, message: str) -> None:
+        print(message)
+        return
