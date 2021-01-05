@@ -1,6 +1,11 @@
-from mock_interface.interface import MockATMInterface
+from mock_bank.bank import MockBank
+from mock_machine.machine import MockMachine
+from session import Session
 
 if __name__ == "__main__":
-    interface = MockATMInterface()
-    interface.insert_card()
+    bank = MockBank()
+    machine = MockMachine()
+
+    session = Session(bank, machine)
+    session.run()
     exit()

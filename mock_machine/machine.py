@@ -1,6 +1,6 @@
 import abc
 
-class ATMInterface(abc.ABC):
+class Machine(abc.ABC):
     @abc.abstractmethod
     def __init__(self):
         pass
@@ -10,22 +10,22 @@ class ATMInterface(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def get_pin(self) -> str:
+    def enter_pin(self) -> str:
         pass
 
     @abc.abstractmethod
-    def get_account(self) -> str:
+    def select_account(self) -> str:
         pass
 
     @abc.abstractmethod
-    def get_action(self) -> str:
+    def select_action(self) -> str:
         pass
 
     @abc.abstractmethod
     def eject_card(self) -> None:
         pass
 
-class MockATMInterface(ATMInterface):
+class MockMachine(Machine):
     def __init__(self):
         super().__init__()
         return
@@ -40,7 +40,7 @@ class MockATMInterface(ATMInterface):
                 continue
         return card
 
-    def get_pin(self) -> str:
+    def enter_pin(self) -> str:
         while True:
             pin = input("enter pin (4 digits): ")
             if pin.isnumeric and len(pin) == 4:
@@ -50,7 +50,7 @@ class MockATMInterface(ATMInterface):
                 continue
         return pin
 
-    def get_account(self, accounts) -> str:
+    def select_account(self, accounts) -> str:
         for i, account in enumerate(accounts):
             print(f"{i}. {account}")
         print(f"{len(accounts)}. Cancel")
@@ -63,7 +63,7 @@ class MockATMInterface(ATMInterface):
                 continue
         return option
 
-    def get_action(self) -> str:
+    def select_action(self) -> str:
         print("0. Check Balance")
         print("1. Deposit Cash")
         print("2. Withdraw Cash")
