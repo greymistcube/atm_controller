@@ -14,7 +14,7 @@ class Machine(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def select_account(self, accounts) -> int:
+    def select_account(self, accounts: list) -> int:
         pass
 
     @abc.abstractmethod

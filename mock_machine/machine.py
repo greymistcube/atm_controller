@@ -34,7 +34,7 @@ class MockMachine(Machine):
                 continue
         return pin
 
-    def select_account(self, accounts) -> int:
+    def select_account(self, accounts: list) -> int:
         print("")
         print("=====================")
         print("SELECT ACCOUNT SCREEN")
