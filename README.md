@@ -26,4 +26,4 @@ The following is a rough overview of the flow:
 
 Note that there are some details missing on how actions are handled.
 
-[atm_controller_flow]: ./docs/static/atm_controller.png
+[atm_controller_flow]: ./docs/static/atm_controller_flow.png
