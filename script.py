@@ -6,6 +6,7 @@ if __name__ == "__main__":
     bank = MockBank()
     machine = MockMachine()
 
-    session = Session(bank, machine)
-    session.run()
+    while True:
+        session = Session(bank, machine)
+        session.run_session()
     exit()

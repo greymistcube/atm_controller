@@ -1,3 +1,4 @@
+import time
 from machine import Machine
 
 class MockMachine(Machine):
@@ -26,14 +27,14 @@ class MockMachine(Machine):
         print("================")
         while True:
             pin = input("enter pin (4 digits): ")
-            if pin.isnumeric and len(pin) == 4:
+            if pin.isnumeric() and len(pin) == 4:
                 break
             else:
                 print("invalid format; please try again")
                 continue
         return pin
 
-    def select_account(self, accounts) -> str:
+    def select_account(self, accounts) -> int:
         print("")
         print("=====================")
         print("SELECT ACCOUNT SCREEN")
@@ -43,14 +44,14 @@ class MockMachine(Machine):
         print(f"{len(accounts)}. Cancel")
         while True:
             option = input(f"select account (0 ~ {len(accounts)}): ")
-            if option.isnumeric and int(option) <= len(accounts):
+            if option.isnumeric() and int(option) <= len(accounts):
                 break
             else:
                 print("invalid option; please try again")
                 continue
-        return option
+        return int(option)
 
-    def select_action(self) -> str:
+    def select_action(self) -> int:
         print("")
         print("====================")
         print("SELECT ACTION SCREEN")
@@ -61,12 +62,48 @@ class MockMachine(Machine):
         print("3. Cancel")
         while True:
             option = input("select action (0 ~ 3): ")
-            if option.isnumeric and int(option) <= 3:
+            if option.isnumeric() and int(option) <= 3:
                 break
             else:
                 print("invalid option; please try again")
                 continue
-        return option
+        return int(option)
+
+    def balance(self, balance: int) -> int:
+        print("")
+        print("==============")
+        print("BALANCE SCREEN")
+        print("==============")
+        print(f"balance: {balance}")
+        return
+
+    def deposit(self) -> int:
+        print("")
+        print("==============")
+        print("DEPOSIT SCREEN")
+        print("==============")
+        while True:
+            amount = input("enter deposit amount: ")
+            if amount.isnumeric():
+                break
+            else:
+                print("invalid amount; please try again")
+                continue
+        return int(amount)
+
+    def withdraw(self) -> int:
+        print("")
+        print("===============")
+        print("WITHDRAW SCREEN")
+        print("===============")
+        while True:
+            amount = input("enter withdraw amount: ")
+            if amount.isnumeric():
+                break
+            else:
+                print("invalid amount; please try again")
+                continue
+        return int(amount)
 
     def eject_card(self) -> None:
         print("")
@@ -75,6 +112,17 @@ class MockMachine(Machine):
         print("=================")
         input("please retrieve your card (press enter)")
         print("bye")
+        return
+
+    def error(self) -> None:
+        print("")
+        print("============")
+        print("ERROR SCREEN")
+        print("============")
+        print("something went terribly wrong")
+        print("please contant an admin")
+        while True:
+            time.sleep(60)
         return
 
     def print_message(self, message: str) -> None:

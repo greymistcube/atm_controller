@@ -14,15 +14,31 @@ class Machine(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def select_account(self, accounts) -> str:
+    def select_account(self, accounts) -> int:
         pass
 
     @abc.abstractmethod
-    def select_action(self) -> str:
+    def select_action(self) -> int:
+        pass
+
+    @abc.abstractmethod
+    def balance(self, balance: int) -> None:
+        pass
+
+    @abc.abstractmethod
+    def deposit(self) -> int:
+        pass
+
+    @abc.abstractmethod
+    def withdraw(self) -> int:
         pass
 
     @abc.abstractmethod
     def eject_card(self) -> None:
+        pass
+
+    @abc.abstractmethod
+    def error(self) -> None:
         pass
 
     @abc.abstractmethod
